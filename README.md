@@ -23,16 +23,24 @@ Or install it yourself as:
 ```ruby
 require "bundler/setup"
 require 'simple_cache'
- 
-sc = SimpleCache::Store.new
- 
-path = 'image.jpg'
-file = File.open(path, 'r')
- 
-key = sc.set(file, path)
- 
-cached_file = sc.get(key)
-cached_file.data # nil or File instance
+
+def getImage(path)
+  sc = SimpleCache::Store.new
+  cache = sc.get(path) # if path equal cache key
+
+  if cache.data.nil?
+    file = File.open(path, 'r')
+    sc.set(file, path)
+    cache = sc.get(path)
+  end
+  cache.data
+end
+
+# ------> request
+# ...
+getImage('image.jpg')
+# ...
+# <------ responce
 ```
 
 ## Development
