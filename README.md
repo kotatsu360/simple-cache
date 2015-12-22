@@ -2,21 +2,8 @@
 
 SimpleCache is a cache module based on LRU
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'simple_cache'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install simple_cache
+## ~~Installation~~ 
+Comming soon ...
 
 ## Usage
 
@@ -45,9 +32,10 @@ getImage('image.jpg')
 
 ## Development
 
+    $ bin/setup
     $ bundle exec guard
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kotatsu360/simple_cache.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kotatsu360/simple-cache.
 
