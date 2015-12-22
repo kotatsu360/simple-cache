@@ -24,4 +24,20 @@ describe 'SimpleCache::Data' do
       expect(data.lastused_at).to eq(nil)
     end
   end
+
+  describe 'interface' do
+    let(:data) { SimpleCache::Data.new('data') }
+    it 'data is readonly' do
+      expect{data.data=''}.to raise_error(NoMethodError)
+    end
+
+    it 'created_at is readonly' do
+      expect{data.created_at=''}.to raise_error(NoMethodError)
+    end
+
+    it 'lastused_at is writable' do
+      data.lastused_at = 'dummy'
+      expect(data.lastused_at).to eq('dummy')
+    end
+  end
 end
