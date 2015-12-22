@@ -26,12 +26,12 @@ require 'simple_cache'
 
 def getImage(path)
   sc = SimpleCache::Store.new
-  cache = sc.get(path) # if path equal cache key
+  cache = sc.get(path) # if path equal cache access key
 
   if cache.data.nil?
     file = File.open(path, 'r')
-    sc.set(file, path)
-    cache = sc.get(path)
+    key = sc.set(file, path) # set and return cache access key
+    cache = sc.get(key)
   end
   cache.data
 end
