@@ -35,14 +35,13 @@ describe 'Cache::Store' do
     it 'clear cache' do 
       scs.set('a', 'key-a')
       before = scs.cache_usage
-
-      scs.clear()
-      after = scs.cache_usage
-
       expect(before).not_to eq(0)
-      expect(after).to  eq(0)
 
-      expect(myClass.class_variable_get(:@@cache)).to eq({})
+      res = scs.clear()
+      expect(res).to eq({})
+
+      after = scs.cache_usage
+      expect(after).to  eq(0)
     end
   end
 
